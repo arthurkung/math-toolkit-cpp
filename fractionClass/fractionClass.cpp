@@ -1,55 +1,32 @@
 #include <algorithm>
 #include <iostream>
+#include "Fraction.h"
 
-
-class Fraction {
-private:
-    int m_num;
-    int m_denom;
-    void simplify() {
-        int HCF{findHCF()};
-        m_num /= HCF;
-        m_denom /= HCF;
-        if (m_denom < 0)
-        {
-            m_num *= -1;
-            m_denom *= -1;
-        }
-    }
-
-    int findHCF() {
-        int num{ std::abs(m_num) };
-        int denom{ std::abs(m_denom) };
-        int a{ std::min(num, denom) };
-        int b{ std::max(num, denom) };
-        int remainder{ b % a };
-        while (remainder) {
-            b = a;
-            a = remainder;
-            remainder = b % a;
-        }
-
-        return a;
-    }
-public:
-    Fraction(int num=1, int denom = 1):m_num(num), m_denom(denom)
+void Fraction::simplify() {
+    int HCF{ findHCF() };
+    m_num /= HCF;
+    m_denom /= HCF;
+    if (m_denom < 0)
     {
-        simplify();
+        m_num *= -1;
+        m_denom *= -1;
     }
-    
-    double convertTodouble(){
-        return static_cast<double>(m_num) / m_denom;
+}
+
+int Fraction::findHCF() {
+    int num{ std::abs(m_num) };
+    int denom{ std::abs(m_denom) };
+    int a{ std::min(num, denom) };
+    int b{ std::max(num, denom) };
+    int remainder{ b % a };
+    while (remainder) {
+        b = a;
+        a = remainder;
+        remainder = b % a;
     }
-    friend std::ostream& operator<< (std::ostream& out, const Fraction& fraction);
-    friend std::istream& operator>> (std::istream& in, Fraction& fraction);
-    friend Fraction operator+(const Fraction& f1, const Fraction& f2);
-    friend Fraction operator-(const Fraction& f1, const Fraction& f2);
-    friend Fraction operator*(const Fraction& f1, const Fraction& f2);
-    friend Fraction operator/(const Fraction& f1, const Fraction& f2);
-    //can we operate with float/int?
 
-
-};
+    return a;
+}
 Fraction operator+(const Fraction& f1, const Fraction& f2)
 {
     return Fraction(f1.m_num*f2.m_denom + f2.m_num*f1.m_denom,f1.m_denom* f2.m_denom);
@@ -77,21 +54,4 @@ std::istream& operator>> (std::istream& in, Fraction& fraction)
     in >> fraction.m_denom;
     fraction.simplify();
     return in;
-}
-
-int main()
-{/*
-    Fraction a{ 1,6 };
-    Fraction b{ 1,3 };
-    std::cout << a << "\n";
-    std::cout << b << "\n";
-    std::cout << a + b << "\n";*/
-
-    Fraction c;
-    std::cout << "Enter a fraction: \n";
-    std::cin >> c;
-    std::cout << c << "\n";
-
-
-    return 0;
 }
