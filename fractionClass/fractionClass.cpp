@@ -9,7 +9,9 @@ void Fraction::simplify() {
     }
     else
     {
-        int HCF{ findHCF() };
+        int absNum{ std::abs(m_num) };
+        int absDenom{ std::abs(m_denom) };
+        int HCF{ findHCF(std::min(absNum, absDenom),std::max(absNum, absDenom)) };
         m_num /= HCF;
         m_denom /= HCF;
         if (m_denom < 0)
@@ -21,19 +23,11 @@ void Fraction::simplify() {
     
 }
 
-int Fraction::findHCF() {
-    int num{ std::abs(m_num) };
-    int denom{ std::abs(m_denom) };
-    int a{ std::min(num, denom) };
-    int b{ std::max(num, denom) };
-    int remainder{ b % a };
-    while (remainder) {
-        b = a;
-        a = remainder;
-        remainder = b % a;
-    }
+int Fraction::findHCF(int smallerNum, int largerNum) {
 
-    return a;
+    return (largerNum % smallerNum == 0)?
+        smallerNum :
+        findHCF(largerNum % smallerNum, smallerNum);
 }
 Fraction operator+(const Fraction& f1, const Fraction& f2)
 {
