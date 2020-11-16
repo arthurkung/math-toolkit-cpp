@@ -36,13 +36,18 @@ public:
     {
         simplify();
     }
+    
+    double convertTodouble(){
+        return static_cast<double>(m_num) / m_denom;
+    }
     friend std::ostream& operator<< (std::ostream& out, const Fraction& fraction);
     friend std::istream& operator>> (std::istream& in, Fraction& fraction);
     friend Fraction operator+(const Fraction& f1, const Fraction& f2);
     friend Fraction operator-(const Fraction& f1, const Fraction& f2);
     friend Fraction operator*(const Fraction& f1, const Fraction& f2);
     friend Fraction operator/(const Fraction& f1, const Fraction& f2);
-    //can we convert to float / int?
+    //can we operate with float/int?
+
 
 };
 Fraction operator+(const Fraction& f1, const Fraction& f2)
