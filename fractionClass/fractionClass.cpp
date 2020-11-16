@@ -3,14 +3,22 @@
 #include "Fraction.h"
 
 void Fraction::simplify() {
-    int HCF{ findHCF() };
-    m_num /= HCF;
-    m_denom /= HCF;
-    if (m_denom < 0)
+    if (m_num == 0)
     {
-        m_num *= -1;
-        m_denom *= -1;
+        m_denom = 1;
     }
+    else
+    {
+        int HCF{ findHCF() };
+        m_num /= HCF;
+        m_denom /= HCF;
+        if (m_denom < 0)
+        {
+            m_num *= -1;
+            m_denom *= -1;
+        }
+    }
+    
 }
 
 int Fraction::findHCF() {
