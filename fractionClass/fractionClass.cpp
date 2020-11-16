@@ -10,7 +10,11 @@ private:
         int HCF{findHCF()};
         m_num /= HCF;
         m_denom /= HCF;
-        //handle sign here
+        if (m_denom < 0)
+        {
+            m_num *= -1;
+            m_denom *= -1;
+        }
     }
 
     int findHCF() {
