@@ -22,7 +22,7 @@ void Fraction::simplify() {
     }
     
 }
-Fraction& Fraction::operator+=(Fraction value)
+Fraction& Fraction::operator+=(const Fraction& value)
 {
     Fraction sum{ *this + value };
     this->m_num = sum.m_num;
