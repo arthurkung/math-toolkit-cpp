@@ -30,6 +30,11 @@ Fraction& Fraction::operator+=(const Fraction& value)
     return *this;
 
 }
+bool operator> (const Fraction& f1, const Fraction& f2)
+{
+    return (f1 - f2).m_num > 0;
+}
+
 int Fraction::findHCF(int smallerNum, int largerNum) {
 
     return (largerNum % smallerNum == 0)?
