@@ -22,12 +22,12 @@ void Fraction::simplify() {
     }
     
 }
-Fraction Fraction::operator+=(Fraction value)
+Fraction& Fraction::operator+=(Fraction value)
 {
     Fraction sum{ *this + value };
     this->m_num = sum.m_num;
     this->m_denom = sum.m_denom;
-    return sum;
+    return *this;
 
 }
 int Fraction::findHCF(int smallerNum, int largerNum) {
