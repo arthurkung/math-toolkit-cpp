@@ -10,6 +10,7 @@ int main()
     std::cout << a << "\n";
     std::cout << b << "\n";
     std::cout << (a>b) << "\n";
+    std::cout << b["numerator"] << "\n";
 
     /*Fraction c;
     std::cout << "Enter a fraction: \n";

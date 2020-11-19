@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include "Fraction.h"
+#include <cassert> // for assert()
 
 void Fraction::simplify() {
     if (m_num == 0)
@@ -34,7 +35,12 @@ bool operator> (const Fraction& f1, const Fraction& f2)
 {
     return (f1 - f2).m_num > 0;
 }
+int& Fraction::operator[] (std::string index)
+{
+    assert(index == "numerator" || index == "denomintor");
 
+    return (index== "numerator")? m_num:m_denom;
+}
 int Fraction::findHCF(int smallerNum, int largerNum) {
 
     return (largerNum % smallerNum == 0)?
