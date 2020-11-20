@@ -11,6 +11,7 @@ int main()
     std::cout << b << "\n";
     std::cout << (a>b) << "\n";
     std::cout << b["numerator"] << "\n";
+    std::cout << static_cast<float>(b) << "\n";
 
     /*Fraction c;
     std::cout << "Enter a fraction: \n";
