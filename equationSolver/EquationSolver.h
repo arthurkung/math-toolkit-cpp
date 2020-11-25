@@ -1,3 +1,5 @@
+#include <utility>
+
 #ifndef EQUATIONSOLVER_H
 #define EQUATIONSOLVER_H
 
@@ -14,6 +16,8 @@ public:
 	funcPtr m_func;
 
 	double evaluateFunc(double x) { return m_func(x); }
+	double solveByBisection(double,std::pair<double, double>);
+
 
 private:
 

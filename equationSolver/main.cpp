@@ -20,5 +20,9 @@ int main()
 
 
     EquationSolver solver(&simpleLinear);
-    std::cout << solver.evaluateFunc(2.0)<<"\n";
+    //std::cout << solver.evaluateFunc(2.0)<<"\n";
+    std::cout << solver.solveByBisection(0.01, std::make_pair(0.0, 1.0)) << "\n";
+
+
+
 }
